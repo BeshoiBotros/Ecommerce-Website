@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="/img/icon.png">
+    <link rel="icon" type="image/x-icon" href="/img/icon.png" />
     <link rel="stylesheet" href="./CSS/style.css" />
     <link
       rel="stylesheet"
@@ -19,20 +19,6 @@
           <a href="#" class="logo"><img src="./img/logo.png" alt="" /></a>
 
           <form action="" class="search-box">
-            <!-- <div class="select-box">
-              <select id="category" name="category">
-                <option value="All_Categories">All Categories</option>
-                <option value="Phones_Tablet">Phones & Tablety</option>
-                <option value="Electronics_Digita">Electronics & Digita</option>
-                <option value="Fashion &amp; Clothings">
-                  Fashion &amp; Clothings
-                </option>
-                <option value="Telivsion_Monitor">Telivsion & Monitor</option>
-                <option value="Jewelry_Watches">Jewelry & Watches</option>
-                <option value="Washing_Machine">Washing Machine</option>
-                <option value="Toys_Hobbies">Toys & Hobbies</option>
-              </select>
-            </div> -->
             <input
               type="text"
               name="search"
@@ -68,7 +54,7 @@
                 <span>Browse Category</span>
                 <i class="fa-solid fa-angle-down"></i>
               </div>
-              <div class="category_nav_list">
+              <div class="category_nav_list" id="cat-list">
                 <a href="#">Top 10 Offers</a>
                 <a href="#">Electronics & Digita</a>
                 <a href="#">Phones & Tablet</a>
@@ -136,7 +122,7 @@
     <div class="hero">
       <div class="container">
         <div class="carosal">
-          <a href="#" class="carosal-link "></a>
+          <a href="#" class="carosal-link"></a>
           <i class="fa-solid fa-angle-left" id="prevImg"></i>
           <img src="./img/banner_home1.png" alt="" id="carosalCurrentImage" />
           <i class="fa-solid fa-angle-right" id="nxtImg"></i>
@@ -225,8 +211,24 @@
       </div>
     </div>
 
+    <div class="products">
+      <div class="container" id="allProducts">
 
+      </div>
+      <div class="container2">
+        <div class="pagination">
+          <button class="page-btn prev" id="prevPage">« Prev</button>
+          <button class="page-btn active" id="page-1" data-page-id="1">1</button>
+          <button class="page-btn" id="page-2" data-page-id="2">2</button>
+          <button class="page-btn" id="page-3" data-page-id="3">3</button>
+          <button class="page-btn" id="page-4" data-page-id="4">4</button>
+          <button class="page-btn" id="page-5" data-page-id="5">5</button>
+          <button class="page-btn next" id="nextPage">Next »</button>
+        </div>
+      </div>
+    </div>
 
-    <script src="./JS/main.js"></script>
+    <script type="module" src="./JS/controllersAndViews.js"></script>
+    <script type="module" src="./JS/main.js"></script>
   </body>
 </html>
