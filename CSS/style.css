@@ -17,6 +17,8 @@
   --border-color: #d5d5d5;
   --shadow-color: #e7e7e7;
   --white-color: #fff;
+  --light-opacity: #0000004f;
+  --heigh-opacity: #0000004f;
 }
 .active * {
   color: var(--primary-color) !important;
@@ -44,7 +46,9 @@ textarea {
 button {
   cursor: pointer;
 }
-
+p, span{
+  font-size: clamp(12px, 2vw, 16px); 
+}
 .container {
   width: 90%;
   margin: auto;
@@ -95,18 +99,28 @@ header .top-header .container .search-box input {
   width: 410px;
   height: 55px;
   padding: 5px 15px 5px 10px;
-  font-size: 18px;
+  font-size: clamp(12px, 2vw, 16px); 
   border: 1px solid var(--border-color);
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   color: var(--text-color);
 }
+
+header .top-header .container .search-box input::placeholder{
+  font-size: clamp(12px, 2vw, 16px); 
+}
+
+header .top-header .container .search-box:focus-within{
+  box-shadow: 1px 1px 10px var(--text-color);
+}
+
 header .top-header .container .search-box select {
   height: 55px;
   /* padding: 5px 0px 5px 10px; */
   padding-left: 5px;
   cursor: pointer;
 }
+
 
 header .top-header .container .search-box .select-box {
   position: relative;
@@ -295,16 +309,151 @@ header .bottom-header .container #menu-btn {
   gap: 8px;
 }
 .hero .container .carosal{
-  
-  width: 70%;
-  min-height: 200vh;
-  background-color: #878787;
+  position: relative;
+  width: 77%;
+  margin: auto;
+}
+
+.hero .container .carosal .carosal-link{
+  position: absolute;
+  top: 0;
+  left: 50px;
+  right: 50px;
+  bottom: 0;
+  z-index: 5;
 }
 
 .hero .container .new{
-  min-height: 60vh;
-  background-color: #878787;
-  width: 30%;
+  width: 23.5%;
+}
+.fa-angle-left{
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  background-color: var(--light-opacity);
+  padding: 15px;
+  font-size: 18px;
+  color: var(--light-color);
+  width: 50px;
+  cursor: pointer;
+  padding-right: 25px;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.fa-angle-left:hover{
+  background-color: var(--dark-color);
+}
+
+.fa-angle-right{
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  background-color: var(--light-opacity);
+  padding: 15px;
+  font-size: 18px;
+  color: var(--light-color);
+  width: 50px;
+  cursor: pointer;
+  padding-right: 25px;  
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+.fa-angle-right:hover{
+  background-color: var(--dark-color);
+}
+
+#carosalCurrentImage {
+  transition: opacity 0.3s ease-in-out;
+  display: block;
+  z-index: 1; 
+  position: relative;
+  z-index: 1;
+  opacity: 1;
+}
+
+#carosalCurrentImage.fade-out {
+  opacity: 0;
+}
+.new{
+  position: relative;
+}
+
+.new .new-sale{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+}
+
+.banner{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.banner .container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+  flex: 1 1 25%;
+}
+
+.banner .container .banner-box{
+  max-width: calc(50% - 10px);
+  min-width: 220px;
+  background-image: url('../img/bg_banner3.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  padding: 12px 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1 1 calc(25% - 10px);
+}
+
+.banner .container .banner-box a{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0; 
+}
+
+.banner .container .banner-box img{
+  max-width: 100px;
+  transition: all 0.5s ease;
+}
+
+.banner .container .banner-box .text{
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  gap: 5px;
+}
+
+.banner .container .banner-box .text .sale{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+}
+
+.banner .container .banner-box .text .sale p{
+  color: var(--text-color);
+}
+
+.banner .container .banner-box .text .sale span{
+  font-size: 25px;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.banner .container .banner-box:hover .scale-img{
+  transform: scale(1.1);
 }
 
 /* Responsive */
@@ -362,6 +511,9 @@ header .bottom-header .container #menu-btn {
 
   header .bottom-header .container .nav .category-button {
     max-width: 190px;
+  }
+  header .bottom-header .container .nav .category_nav_list{
+    max-width: 190px
   }
   .mobile-menu {
     /* display: none; */
@@ -426,5 +578,30 @@ header .bottom-header .container #menu-btn {
   header .bottom-header .container .nav .category-nav .category_nav_list {
     position: absolute;
     z-index: 1000;
+  }
+  .hiddden-in-mob{
+    display: none;
+  }
+  .fa-angle-left{
+    font-size: 12px;
+    padding: 5px;
+    width: 35px;
+    max-height: 35px;
+  }
+  .fa-angle-right{
+    font-size: 12px;
+    padding: 5px;
+    width: 35px;
+    max-height: 35px;
+  }
+  .hero .container .carosal{
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px){
+    .banner .container .banner-box{
+      min-width: 100%;
+      justify-content: space-around;
   }
 }
