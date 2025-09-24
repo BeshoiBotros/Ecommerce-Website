@@ -12,6 +12,13 @@ export async function getAllProducts(skip = 0) {
   return products.json();
 }
 
+export async function filterByCategory(categoryName = "") {
+  let result = await fetch(
+    `https://dummyjson.com/products/category/${categoryName}/?limit=200`
+  );
+  return result.json();
+}
+
 // views
 export async function renderCategoryList() {
   const catList = document.getElementById("cat-list");
@@ -22,6 +29,8 @@ export async function renderCategoryList() {
     const a = document.createElement("a");
     a.href = "#";
     a.innerHTML = element;
+    a.classList.add("category-item");
+    a.setAttribute("data-category-name", element);
     catList.appendChild(a);
   });
 }
@@ -76,6 +85,42 @@ export async function renderAllProducts(skip = 0) {
     `;
     allProducts.insertAdjacentHTML("beforeend", card);
   });
+}
+
+export async function productsOfCategory(cat) {
+  const allProducts = document.getElementById("allProducts");
+
+  renderSkeletonCards();
+
+  let productsFiltered = await filterByCategory(cat);
+  productsFiltered = productsFiltered;
+  console.log(await productsFiltered.products)
+  allProducts.replaceChildren();
+
+  await productsFiltered.products.forEach((element) => {
+    let card = `
+      <div class="product-card" id="${element.id}">
+        <div class="card-image">
+          <a href="#"></a>
+          <img src="${element.thumbnail}" alt="${element.title}" />
+          <button class="like-btn">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <h3 class="product-title">${element.title}</h3>
+          <p class="product-description">${element.description}</p>
+          <p class="product-price">$${element.price}</p>
+          <button class="add-to-cart">
+            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+          </button>
+        </div>
+      </div>
+    `;
+    allProducts.insertAdjacentHTML("beforeend", card);
+  });
+
+  document.getElementById('pagination').classList.add('disable')
 }
 
 // call views

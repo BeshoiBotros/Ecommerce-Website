@@ -1,5 +1,5 @@
 // imports all modules into main.js
-import { getAllCategories, renderAllProducts } from "./controllersAndViews.js";
+import { getAllCategories, renderAllProducts, productsOfCategory } from "./controllersAndViews.js";
 // -------------
 
 function openCategoryList() {
@@ -80,6 +80,7 @@ let allProducts = document.getElementById("allProducts");
 let currentPage = 1;
 
 async function checkValidateOfPrevButton() {
+  document.getElementById('pagination').classList.remove('disable');
   await new Promise((r) => setTimeout(r, 0));
 
   const firstChild = allProducts.firstElementChild;
@@ -102,6 +103,7 @@ async function checkValidateOfPrevButton() {
 }
 
 async function checkValidateOfNextButton() {
+  document.getElementById('pagination').classList.remove('disable');
   await new Promise((r) => setTimeout(r, 0));
 
   const firstChild = allProducts.firstElementChild;
@@ -125,7 +127,7 @@ async function checkValidateOfNextButton() {
   }
 }
 
-const pageButtons = [page1Btn, page2Btn, page3Btn, page4Btn, page5Btn];
+export const pageButtons = [page1Btn, page2Btn, page3Btn, page4Btn, page5Btn];
 
 pageButtons.forEach((btn) => {
   btn.addEventListener("click", async () => {
@@ -163,6 +165,7 @@ prevPage.addEventListener("click", async () => {
 
   if (lastPageBtn) lastPageBtn.classList.remove("active");
   if (currentPageBtn) currentPageBtn.classList.add("active");
+  document.getElementById('pagination').classList.remove('disable');
 });
 
 nextPage.addEventListener("click", async () => {
@@ -192,4 +195,18 @@ nextPage.addEventListener("click", async () => {
   } else {
     await checkValidateOfNextButton();
   }
+  document.getElementById('pagination').classList.remove('disable');
+});
+
+// --------------------------------------------
+// handle category links
+
+const categoriesItemsLinks = document.querySelectorAll('[data-category-name]');
+
+categoriesItemsLinks.forEach(element =>{
+  element.addEventListener('click', async (e)=>{
+    e.preventDefault();
+    let catName = element.innerHTML;
+    await productsOfCategory(catName);
+  });
 });

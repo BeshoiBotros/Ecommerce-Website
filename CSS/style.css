@@ -707,6 +707,14 @@ header .bottom-header .container #menu-btn {
   bottom: 0;
 }
 
+#pagination.disable * {
+  background-color: var(--border-color);
+  color: var(--text-color);
+  cursor: not-allowed;
+  /* cursor: none; */
+  opacity: 0.5;
+}
+
 /* Responsive */
 @media (max-width: 970px) {
   p,
@@ -833,18 +841,7 @@ header .bottom-header .container #menu-btn {
   .hiddden-in-mob {
     display: none;
   }
-  .fa-angle-left {
-    font-size: 12px;
-    padding: 5px;
-    width: 35px;
-    max-height: 35px;
-  }
-  .fa-angle-right {
-    font-size: 12px;
-    padding: 5px;
-    width: 35px;
-    max-height: 35px;
-  }
+
   .hero .container .carosal {
     width: 100%;
   }
