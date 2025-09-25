@@ -19,6 +19,14 @@ export async function filterByCategory(categoryName = "") {
   return result.json();
 }
 
+export async function filterBySearch(query) {
+  let products = await fetch(
+    `https://dummyjson.com/products/search?q=${query}`
+  );
+
+  return products.json();
+}
+
 // views
 export async function renderCategoryList() {
   const catList = document.getElementById("cat-list");
@@ -94,7 +102,7 @@ export async function productsOfCategory(cat) {
 
   let productsFiltered = await filterByCategory(cat);
   productsFiltered = productsFiltered;
-  console.log(await productsFiltered.products)
+  console.log(await productsFiltered.products);
   allProducts.replaceChildren();
 
   await productsFiltered.products.forEach((element) => {
@@ -120,7 +128,43 @@ export async function productsOfCategory(cat) {
     allProducts.insertAdjacentHTML("beforeend", card);
   });
 
-  document.getElementById('pagination').classList.add('disable')
+  document.getElementById("pagination").classList.add("disable");
+}
+
+export async function renderProductsBySearch(query='') {
+
+  const allProducts = document.getElementById("allProducts");
+
+  renderSkeletonCards();
+
+  let productsFiltered = await filterBySearch(query);
+  productsFiltered = productsFiltered;
+  allProducts.replaceChildren();
+
+  await productsFiltered.products.forEach((element) => {
+    let card = `
+      <div class="product-card" id="${element.id}">
+        <div class="card-image">
+          <a href="#"></a>
+          <img src="${element.thumbnail}" alt="${element.title}" />
+          <button class="like-btn">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <h3 class="product-title">${element.title}</h3>
+          <p class="product-description">${element.description}</p>
+          <p class="product-price">$${element.price}</p>
+          <button class="add-to-cart">
+            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+          </button>
+        </div>
+      </div>
+    `;
+    allProducts.insertAdjacentHTML("beforeend", card);
+  });
+
+  document.getElementById("pagination").classList.add("disable");
 }
 
 // call views
