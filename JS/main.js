@@ -5,21 +5,22 @@ import {
   productsOfCategory,
   renderProductsBySearch,
 } from "./controllersAndViews.js";
-// -------------
 
-function openCategoryList() {
-  let dropNavMenu = document.querySelector(".category_nav_list");
-  dropNavMenu.classList.toggle("enable");
-}
+import {
+  toggleMobileMenu,
+  openCategoryList,
+  addToCart,
+  removeFromCart,
+  renderCartCounter,
+  addToFav,
+  removeFromFav,
+  renderFavCounter,
+} from "./utils.js";
+// -------------
 
 document.getElementById("cat-btn").addEventListener("click", (e) => {
   openCategoryList();
 });
-
-function toggleMobileMenu() {
-  let mobMenu = document.querySelector(".mobile-menu");
-  mobMenu.classList.toggle("collapse");
-}
 
 document.getElementById("menu-btn").addEventListener("click", (e) => {
   toggleMobileMenu();
@@ -225,6 +226,39 @@ searchForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   let searchQuery = document.getElementById("search-input").value;
   await renderProductsBySearch(searchQuery);
-  // await checkValidateOfPrevButton();
-  // await checkValidateOfNextButton();
+  await checkValidateOfPrevButton();
+  await checkValidateOfNextButton();
+});
+
+renderCartCounter();
+
+let addToCartBtns = document.querySelectorAll("[data-product-id]");
+addToCartBtns.forEach((element) => {
+  element.addEventListener("click", async () => {
+    if (element.classList.contains("cart-btn-clicked")) {
+      await removeFromCart(+element.dataset.productId);
+    } else {
+      await addToCart(+element.dataset.productId);
+    }
+    renderCartCounter();
+    element.classList.toggle("cart-btn-clicked");
+    element.classList.toggle("add-to-cart");
+    element.innerText = element.classList.contains("cart-btn-clicked")
+      ? "Remove from Cart"
+      : "Add to Cart";
+  });
+});
+renderFavCounter();
+let addToFavBtns = document.querySelectorAll("[data-fav-product-id]");
+addToFavBtns.forEach((element) => {
+  element.addEventListener("click", async () => {
+    if (element.classList.contains("fav-btn-clicked")) {
+      await removeFromFav(+element.dataset.favProductId);
+    } else {
+      await addToFav(+element.dataset.favProductId);
+    }
+    renderFavCounter();
+    element.classList.toggle("fav-btn-clicked");
+    element.classList.toggle("like-btn");
+  });
 });

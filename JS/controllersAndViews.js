@@ -77,7 +77,7 @@ export async function renderAllProducts(skip = 0) {
         <div class="card-image">
           <a href="#"></a>
           <img src="${element.thumbnail}" alt="${element.title}" />
-          <button class="like-btn">
+          <button class="like-btn" data-fav-product-id=${element.id}>
             <i class="fa-regular fa-heart"></i>
           </button>
         </div>
@@ -85,7 +85,7 @@ export async function renderAllProducts(skip = 0) {
           <h3 class="product-title">${element.title}</h3>
           <p class="product-description">${element.description}</p>
           <p class="product-price">$${element.price}</p>
-          <button class="add-to-cart">
+          <button class="add-to-cart" data-product-id=${element.id}>
             <i class="fa-solid fa-cart-shopping"></i> Add to Cart
           </button>
         </div>
@@ -119,7 +119,7 @@ export async function productsOfCategory(cat) {
           <h3 class="product-title">${element.title}</h3>
           <p class="product-description">${element.description}</p>
           <p class="product-price">$${element.price}</p>
-          <button class="add-to-cart">
+          <button class="add-to-cart" data-product-id=${element.id}>
             <i class="fa-solid fa-cart-shopping"></i> Add to Cart
           </button>
         </div>
@@ -155,7 +155,7 @@ export async function renderProductsBySearch(query='') {
           <h3 class="product-title">${element.title}</h3>
           <p class="product-description">${element.description}</p>
           <p class="product-price">$${element.price}</p>
-          <button class="add-to-cart">
+          <button class="add-to-cart" data-product-id=${element.id}>
             <i class="fa-solid fa-cart-shopping"></i> Add to Cart
           </button>
         </div>
