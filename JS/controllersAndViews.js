@@ -64,7 +64,6 @@ function renderSkeletonCards(count = 12) {
 
 export async function renderAllProducts(skip = 0) {
   const allProducts = document.getElementById("allProducts");
-
   renderSkeletonCards();
 
   let productsObject = await getAllProducts(skip);
@@ -93,7 +92,25 @@ export async function renderAllProducts(skip = 0) {
     `;
     allProducts.insertAdjacentHTML("beforeend", card);
   });
+
+  let addToCartBtns = document.querySelectorAll("[data-product-id]");
+  addToCartBtns.forEach((element) => {
+    element.addEventListener("click", async () => {
+      if (element.classList.contains("cart-btn-clicked")) {
+        await removeFromCart(+element.dataset.productId);
+      } else {
+        await addToCart(+element.dataset.productId);
+      }
+      renderCartCounter();
+      element.classList.toggle("cart-btn-clicked");
+      element.classList.toggle("add-to-cart");
+      element.innerText = element.classList.contains("cart-btn-clicked")
+        ? "Remove from Cart"
+        : "Add to Cart";
+    });
+  });
 }
+
 
 export async function productsOfCategory(cat) {
   const allProducts = document.getElementById("allProducts");
@@ -111,7 +128,7 @@ export async function productsOfCategory(cat) {
         <div class="card-image">
           <a href="#"></a>
           <img src="${element.thumbnail}" alt="${element.title}" />
-          <button class="like-btn">
+          <button class="like-btn" data-fav-product-id=${element.id}>
             <i class="fa-regular fa-heart"></i>
           </button>
         </div>

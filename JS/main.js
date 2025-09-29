@@ -248,6 +248,7 @@ addToCartBtns.forEach((element) => {
       : "Add to Cart";
   });
 });
+
 renderFavCounter();
 let addToFavBtns = document.querySelectorAll("[data-fav-product-id]");
 addToFavBtns.forEach((element) => {

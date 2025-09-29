@@ -41,20 +41,18 @@ export async function addToCart(productId) {
 }
 
 export function removeFromCart(id) {
-  let cart = JSON.parse(localStorage.getItem("cart"));
-  let exist = cart.find((item) => item.id === id);
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let exist = cart.find((item) => item.id === Number(id));
 
-  if (exist) {
-    exist.quantity -= 1;
-    if (exist.quantity <= 0) {
-      cart = cart.filter((item) => item.id !== id);
+    if (exist) {
+        exist.quantity -= 1;
+        if (exist.quantity <= 0) {
+            cart = cart.filter((item) => item.id !== Number(id));
+        }
     }
-  } else {
-    return;
-  }
-  localStorage.setItem("cart", JSON.stringify(cart));
 
-  return cart;
+    localStorage.setItem("cart", JSON.stringify(cart));
+    return cart;
 }
 
 export async function addToFav(productId) {
