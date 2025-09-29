@@ -846,7 +846,7 @@ footer .container .row ul li:hover{
     max-width: 190px;
   }
   .mobile-menu {
-    /* display: none; */
+   
     position: absolute;
     top: 0;
     left: 0;
