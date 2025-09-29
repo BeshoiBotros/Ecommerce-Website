@@ -3,15 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="/img/icon.png" />
+    <link rel="stylesheet" href="./CSS/cart.css" />
     <link rel="stylesheet" href="./CSS/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     />
-    <title>Fredal | Ecommerce</title>
+    <title>Cart</title>
   </head>
-
   <body>
     <header>
       <div class="top-header">
@@ -48,28 +47,11 @@
 
       <div class="bottom-header">
         <div class="container">
-          <nav class="nav">
-            <div class="category-nav">
-              <div class="category-button" id="cat-btn">
-                <i class="fa-solid fa-bars"></i>
-                <span>Browse Category</span>
-                <i class="fa-solid fa-angle-down"></i>
-              </div>
-              <div class="category_nav_list" id="cat-list">
-                <a href="#">Top 10 Offers</a>
-                <a href="#">Electronics & Digita</a>
-                <a href="#">Phones & Tablet</a>
-                <a href="#">Fashion & Clothings</a>
-                <a href="#">Telivsion & Monitor</a>
-                <a href="#">Jewelry & Watches</a>
-                <a href="#">Toys & Hobbies</a>
-              </div>
-            </div>
-
+          <nav class="nav" style="margin: auto;"">
             <ul class="nav-links">
-              <li class="active"><a href="#"> Home </a></li>
+              <li><a href="./index.html"> Home </a></li>
               <li><a href="#"> About </a></li>
-              <li><a href="./cart.html"> Cart </a></li>
+              <li class="active"><a href="#"> Cart </a></li>
               <li><a href="#"> Blog </a></li>
               <li><a href="#"> Contact </a></li>
             </ul>
@@ -77,7 +59,7 @@
           <button id="menu-btn">
             <i class="fa-solid fa-bars"></i>
           </button>
-          <div class="login-signup btns">
+          <div class="login-signup btns" style="display: none">
             <a href="#" class="btn">
               Login
               <i class="fa-solid fa-right-to-bracket"></i>
@@ -94,9 +76,9 @@
           <div class="div">
             <nav class="nav">
               <ul class="nav-links">
-                <li class="active"><a href="#"> Home </a></li>
+                <li><a href="./index.html"> Home </a></li>
                 <li><a href="#"> About </a></li>
-                <li><a href="#"> Accesories </a></li>
+                <li class="active"><a href="#"> Cart </a></li>
                 <li><a href="#"> Blog </a></li>
                 <li><a href="#"> Contact </a></li>
               </ul>
@@ -120,112 +102,42 @@
       </div>
     </header>
 
-    <div class="hero">
-      <div class="container">
-        <div class="carosal">
-          <a href="#" class="carosal-link"></a>
-          <i class="fa-solid fa-angle-left" id="prevImg"></i>
-          <img src="./img/banner_home1.png" alt="" id="carosalCurrentImage" />
-          <i class="fa-solid fa-angle-right" id="nxtImg"></i>
-        </div>
-        <div class="new hiddden-in-mob">
-          <a href="" class="new-sale"></a>
-          <img src="./img/banner_home3.png" alt="" />
+    <div class="cart-container">
+      <!-- Cart Items -->
+      <div class="cart-items">
+
+        <div class="cart-item">
+          <img src="./img/product/15.png" alt="Product" />
+          <div class="item-info">
+            <h4>Another Product</h4>
+            <p>Short description</p>
+          </div>
+          <div class="item-quantity">
+            <button>-</button>
+            <span>2</span>
+            <button>+</button>
+          </div>
+          <div class="item-price"><span>$1,000</span></div>
+          <button class="remove-btn">Remove</button>
         </div>
       </div>
-    </div>
 
-    <div class="banner">
-      <div class="container">
-        <div class="banner-box">
-          <a href="#"></a>
-          <img class="scale-img" src="./img/banner3_1.png" alt="" />
-          <div class="text">
-            <h5>Break Disc</h5>
-            <h5>deals on this</h5>
-
-            <div class="sale">
-              <p>
-                Up <br />
-                To
-              </p>
-              <span>70%</span>
-            </div>
-
-            <h6>Shop Now</h6>
-          </div>
+      <!-- Cart Summary -->
+      <div class="cart-summary">
+        <h3>Order Summary</h3>
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span>$1,500</span>
         </div>
-        <div class="banner-box">
-          <a href="#"></a>
-          <img class="scale-img" src="./img/banner3_2.png" alt="" />
-          <div class="text">
-            <h5>Break Disc</h5>
-            <h5>deals on this</h5>
-
-            <div class="sale">
-              <p>
-                Up <br />
-                To
-              </p>
-              <span>70%</span>
-            </div>
-
-            <h6>Shop Now</h6>
-          </div>
+        <div class="summary-row">
+          <span>Shipping</span>
+          <span>$5.00</span>
         </div>
-        <div class="banner-box">
-          <a href="#"></a>
-          <img class="scale-img" src="./img/banner3_3.png" alt="" />
-          <div class="text">
-            <h5>Break Disc</h5>
-            <h5>deals on this</h5>
-
-            <div class="sale">
-              <p>
-                Up <br />
-                To
-              </p>
-              <span>70%</span>
-            </div>
-
-            <h6>Shop Now</h6>
-          </div>
+        <div class="summary-row total">
+          <span>Total</span>
+          <span>$1,550</span>
         </div>
-        <div class="banner-box">
-          <a href="#"></a>
-          <img class="scale-img" src="./img/banner3_4.png" alt="" />
-          <div class="text">
-            <h5>Break Disc</h5>
-            <h5>deals on this</h5>
-
-            <div class="sale">
-              <p>
-                Up <br />
-                To
-              </p>
-              <span>70%</span>
-            </div>
-
-            <h6>Shop Now</h6>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="products">
-      <div class="container" id="allProducts"></div>
-      <div class="container2">
-        <div class="pagination" id="pagination">
-          <button class="page-btn prev" id="prevPage">« Prev</button>
-          <button class="page-btn active" id="page-1" data-page-id="1">
-            1
-          </button>
-          <button class="page-btn" id="page-2" data-page-id="2">2</button>
-          <button class="page-btn" id="page-3" data-page-id="3">3</button>
-          <button class="page-btn" id="page-4" data-page-id="4">4</button>
-          <button class="page-btn" id="page-5" data-page-id="5">5</button>
-          <button class="page-btn next" id="nextPage">Next »</button>
-        </div>
+        <button class="checkout-btn">Proceed to Checkout</button>
       </div>
     </div>
 
@@ -277,10 +189,9 @@
       </div>
     </footer>
 
-
-
     <script type="module" src="./JS/controllersAndViews.js"></script>
     <script type="module" src="./JS/utils.js"></script>
-    <script type="module" src="./JS/main.js"></script>
+    <script type="module" src="./JS/cart.js"></script>
+    
   </body>
 </html>

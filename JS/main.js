@@ -1,20 +1,26 @@
 // imports all modules into main.js
-import { getAllCategories, renderAllProducts, productsOfCategory } from "./controllersAndViews.js";
-// -------------
+import {
+  getAllCategories,
+  renderAllProducts,
+  productsOfCategory,
+  renderProductsBySearch,
+} from "./controllersAndViews.js";
 
-function openCategoryList() {
-  let dropNavMenu = document.querySelector(".category_nav_list");
-  dropNavMenu.classList.toggle("enable");
-}
+import {
+  toggleMobileMenu,
+  openCategoryList,
+  addToCart,
+  removeFromCart,
+  renderCartCounter,
+  addToFav,
+  removeFromFav,
+  renderFavCounter,
+} from "./utils.js";
+// -------------
 
 document.getElementById("cat-btn").addEventListener("click", (e) => {
   openCategoryList();
 });
-
-function toggleMobileMenu() {
-  let mobMenu = document.querySelector(".mobile-menu");
-  mobMenu.classList.toggle("collapse");
-}
 
 document.getElementById("menu-btn").addEventListener("click", (e) => {
   toggleMobileMenu();
@@ -80,7 +86,7 @@ let allProducts = document.getElementById("allProducts");
 let currentPage = 1;
 
 async function checkValidateOfPrevButton() {
-  document.getElementById('pagination').classList.remove('disable');
+  document.getElementById("pagination").classList.remove("disable");
   await new Promise((r) => setTimeout(r, 0));
 
   const firstChild = allProducts.firstElementChild;
@@ -103,7 +109,7 @@ async function checkValidateOfPrevButton() {
 }
 
 async function checkValidateOfNextButton() {
-  document.getElementById('pagination').classList.remove('disable');
+  document.getElementById("pagination").classList.remove("disable");
   await new Promise((r) => setTimeout(r, 0));
 
   const firstChild = allProducts.firstElementChild;
@@ -165,7 +171,7 @@ prevPage.addEventListener("click", async () => {
 
   if (lastPageBtn) lastPageBtn.classList.remove("active");
   if (currentPageBtn) currentPageBtn.classList.add("active");
-  document.getElementById('pagination').classList.remove('disable');
+  document.getElementById("pagination").classList.remove("disable");
 });
 
 nextPage.addEventListener("click", async () => {
@@ -195,18 +201,65 @@ nextPage.addEventListener("click", async () => {
   } else {
     await checkValidateOfNextButton();
   }
-  document.getElementById('pagination').classList.remove('disable');
+  document.getElementById("pagination").classList.remove("disable");
 });
 
 // --------------------------------------------
 // handle category links
 
-const categoriesItemsLinks = document.querySelectorAll('[data-category-name]');
+const categoriesItemsLinks = document.querySelectorAll("[data-category-name]");
 
-categoriesItemsLinks.forEach(element =>{
-  element.addEventListener('click', async (e)=>{
+categoriesItemsLinks.forEach((element) => {
+  element.addEventListener("click", async (e) => {
     e.preventDefault();
     let catName = element.innerHTML;
     await productsOfCategory(catName);
+  });
+});
+
+// ---------------------------------------
+// Handle search
+
+let searchForm = document.getElementById("search-form");
+
+searchForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  let searchQuery = document.getElementById("search-input").value;
+  await renderProductsBySearch(searchQuery);
+  await checkValidateOfPrevButton();
+  await checkValidateOfNextButton();
+});
+
+renderCartCounter();
+
+let addToCartBtns = document.querySelectorAll("[data-product-id]");
+addToCartBtns.forEach((element) => {
+  element.addEventListener("click", async () => {
+    if (element.classList.contains("cart-btn-clicked")) {
+      await removeFromCart(+element.dataset.productId);
+    } else {
+      await addToCart(+element.dataset.productId);
+    }
+    renderCartCounter();
+    element.classList.toggle("cart-btn-clicked");
+    element.classList.toggle("add-to-cart");
+    element.innerText = element.classList.contains("cart-btn-clicked")
+      ? "Remove from Cart"
+      : "Add to Cart";
+  });
+});
+
+renderFavCounter();
+let addToFavBtns = document.querySelectorAll("[data-fav-product-id]");
+addToFavBtns.forEach((element) => {
+  element.addEventListener("click", async () => {
+    if (element.classList.contains("fav-btn-clicked")) {
+      await removeFromFav(+element.dataset.favProductId);
+    } else {
+      await addToFav(+element.dataset.favProductId);
+    }
+    renderFavCounter();
+    element.classList.toggle("fav-btn-clicked");
+    element.classList.toggle("like-btn");
   });
 });

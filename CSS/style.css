@@ -514,7 +514,7 @@ header .bottom-header .container #menu-btn {
     var(--shadow-color) 37%,
     var(--light-color) 63%
   );
-  background-size:100%;
+  background-size: 100%;
   animation: skelAnim 1.7s ease infinite;
   border-radius: 8px;
 }
@@ -603,6 +603,20 @@ header .bottom-header .container #menu-btn {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
+.fav-btn-clicked {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--white-color);
+  border: none;
+  color: var(--primary-color);
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px var(--shadow-color);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
 .like-btn:hover {
   background: var(--primary-color);
   color: var(--white-color);
@@ -665,6 +679,22 @@ header .bottom-header .container #menu-btn {
   background: #e56f00;
 }
 
+.cart-btn-clicked {
+  background: var(--light-color);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.3s ease;
+  margin-top: auto;
+}
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -715,7 +745,7 @@ header .bottom-header .container #menu-btn {
   opacity: 0.5;
 }
 
-footer{
+footer {
   border-top: 1px solid var(--border-color);
 }
 
@@ -728,28 +758,27 @@ footer .container {
   gap: 50px;
   max-width: 1300px;
   margin: 0 auto;
-
 }
 
-footer .container .row{
+footer .container .row {
   display: flex;
   flex-direction: column;
   gap: 20px;
   /* justify-content: space-between; */
 }
 
-footer .container .row  img{
+footer .container .row img {
   width: clamp(70%, 20%, 40%);
   max-width: 250px;
 }
 
-footer .container .row .footer-icons{
+footer .container .row .footer-icons {
   display: flex;
   /* justify-content: center; */
   gap: 12px;
   align-items: center;
 }
-footer .container .row .footer-icons a{
+footer .container .row .footer-icons a {
   background-color: var(--primary-color);
   color: var(--light-color);
   padding: 12px;
@@ -758,23 +787,21 @@ footer .container .row .footer-icons a{
   transition: all 0.3s ease;
 }
 
-
-
-footer .container .row .footer-icons a:hover{
+footer .container .row .footer-icons a:hover {
   transform: translateY(-9px);
 }
 
-footer .container .row ul li{
-  padding: 8px 0 ;
+footer .container .row ul li {
+  padding: 8px 0;
   transition: all 0.3s ease;
   width: fit-content;
 }
 
-footer .container .row ul li a{
+footer .container .row ul li a {
   color: var(--dark-color);
 }
 
-footer .container .row ul li::before{
+footer .container .row ul li::before {
   font-family: "Font Awesome 5 Free";
   content: "\f0da";
   font-weight: 900;
@@ -782,7 +809,7 @@ footer .container .row ul li::before{
   color: var(--primary-color);
 }
 
-footer .container .row ul li:hover{
+footer .container .row ul li:hover {
   transform: translateX(8px);
 }
 

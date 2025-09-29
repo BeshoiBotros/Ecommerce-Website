@@ -19,6 +19,14 @@ export async function filterByCategory(categoryName = "") {
   return result.json();
 }
 
+export async function filterBySearch(query) {
+  let products = await fetch(
+    `https://dummyjson.com/products/search?q=${query}`
+  );
+
+  return products.json();
+}
+
 // views
 export async function renderCategoryList() {
   const catList = document.getElementById("cat-list");
@@ -56,7 +64,6 @@ function renderSkeletonCards(count = 12) {
 
 export async function renderAllProducts(skip = 0) {
   const allProducts = document.getElementById("allProducts");
-
   renderSkeletonCards();
 
   let productsObject = await getAllProducts(skip);
@@ -69,7 +76,7 @@ export async function renderAllProducts(skip = 0) {
         <div class="card-image">
           <a href="#"></a>
           <img src="${element.thumbnail}" alt="${element.title}" />
-          <button class="like-btn">
+          <button class="like-btn" data-fav-product-id=${element.id}>
             <i class="fa-regular fa-heart"></i>
           </button>
         </div>
@@ -77,7 +84,7 @@ export async function renderAllProducts(skip = 0) {
           <h3 class="product-title">${element.title}</h3>
           <p class="product-description">${element.description}</p>
           <p class="product-price">$${element.price}</p>
-          <button class="add-to-cart">
+          <button class="add-to-cart" data-product-id=${element.id}>
             <i class="fa-solid fa-cart-shopping"></i> Add to Cart
           </button>
         </div>
@@ -85,7 +92,25 @@ export async function renderAllProducts(skip = 0) {
     `;
     allProducts.insertAdjacentHTML("beforeend", card);
   });
+
+  let addToCartBtns = document.querySelectorAll("[data-product-id]");
+  addToCartBtns.forEach((element) => {
+    element.addEventListener("click", async () => {
+      if (element.classList.contains("cart-btn-clicked")) {
+        await removeFromCart(+element.dataset.productId);
+      } else {
+        await addToCart(+element.dataset.productId);
+      }
+      renderCartCounter();
+      element.classList.toggle("cart-btn-clicked");
+      element.classList.toggle("add-to-cart");
+      element.innerText = element.classList.contains("cart-btn-clicked")
+        ? "Remove from Cart"
+        : "Add to Cart";
+    });
+  });
 }
+
 
 export async function productsOfCategory(cat) {
   const allProducts = document.getElementById("allProducts");
@@ -94,7 +119,43 @@ export async function productsOfCategory(cat) {
 
   let productsFiltered = await filterByCategory(cat);
   productsFiltered = productsFiltered;
-  console.log(await productsFiltered.products)
+  console.log(await productsFiltered.products);
+  allProducts.replaceChildren();
+
+  await productsFiltered.products.forEach((element) => {
+    let card = `
+      <div class="product-card" id="${element.id}">
+        <div class="card-image">
+          <a href="#"></a>
+          <img src="${element.thumbnail}" alt="${element.title}" />
+          <button class="like-btn" data-fav-product-id=${element.id}>
+            <i class="fa-regular fa-heart"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <h3 class="product-title">${element.title}</h3>
+          <p class="product-description">${element.description}</p>
+          <p class="product-price">$${element.price}</p>
+          <button class="add-to-cart" data-product-id=${element.id}>
+            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+          </button>
+        </div>
+      </div>
+    `;
+    allProducts.insertAdjacentHTML("beforeend", card);
+  });
+
+  document.getElementById("pagination").classList.add("disable");
+}
+
+export async function renderProductsBySearch(query='') {
+
+  const allProducts = document.getElementById("allProducts");
+
+  renderSkeletonCards();
+
+  let productsFiltered = await filterBySearch(query);
+  productsFiltered = productsFiltered;
   allProducts.replaceChildren();
 
   await productsFiltered.products.forEach((element) => {
@@ -111,7 +172,7 @@ export async function productsOfCategory(cat) {
           <h3 class="product-title">${element.title}</h3>
           <p class="product-description">${element.description}</p>
           <p class="product-price">$${element.price}</p>
-          <button class="add-to-cart">
+          <button class="add-to-cart" data-product-id=${element.id}>
             <i class="fa-solid fa-cart-shopping"></i> Add to Cart
           </button>
         </div>
@@ -120,7 +181,7 @@ export async function productsOfCategory(cat) {
     allProducts.insertAdjacentHTML("beforeend", card);
   });
 
-  document.getElementById('pagination').classList.add('disable')
+  document.getElementById("pagination").classList.add("disable");
 }
 
 // call views
