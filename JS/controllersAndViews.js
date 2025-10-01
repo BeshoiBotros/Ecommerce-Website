@@ -92,25 +92,7 @@ export async function renderAllProducts(skip = 0) {
     `;
     allProducts.insertAdjacentHTML("beforeend", card);
   });
-
-  let addToCartBtns = document.querySelectorAll("[data-product-id]");
-  addToCartBtns.forEach((element) => {
-    element.addEventListener("click", async () => {
-      if (element.classList.contains("cart-btn-clicked")) {
-        await removeFromCart(+element.dataset.productId);
-      } else {
-        await addToCart(+element.dataset.productId);
-      }
-      renderCartCounter();
-      element.classList.toggle("cart-btn-clicked");
-      element.classList.toggle("add-to-cart");
-      element.innerText = element.classList.contains("cart-btn-clicked")
-        ? "Remove from Cart"
-        : "Add to Cart";
-    });
-  });
 }
-
 
 export async function productsOfCategory(cat) {
   const allProducts = document.getElementById("allProducts");
@@ -143,13 +125,13 @@ export async function productsOfCategory(cat) {
       </div>
     `;
     allProducts.insertAdjacentHTML("beforeend", card);
+    
   });
 
   document.getElementById("pagination").classList.add("disable");
 }
 
-export async function renderProductsBySearch(query='') {
-
+export async function renderProductsBySearch(query = "") {
   const allProducts = document.getElementById("allProducts");
 
   renderSkeletonCards();
@@ -182,6 +164,7 @@ export async function renderProductsBySearch(query='') {
   });
 
   document.getElementById("pagination").classList.add("disable");
+
 }
 
 // call views

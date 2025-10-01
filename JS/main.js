@@ -232,34 +232,36 @@ searchForm.addEventListener("submit", async (e) => {
 
 renderCartCounter();
 
-let addToCartBtns = document.querySelectorAll("[data-product-id]");
-addToCartBtns.forEach((element) => {
-  element.addEventListener("click", async () => {
-    if (element.classList.contains("cart-btn-clicked")) {
-      await removeFromCart(+element.dataset.productId);
-    } else {
-      await addToCart(+element.dataset.productId);
-    }
-    renderCartCounter();
-    element.classList.toggle("cart-btn-clicked");
-    element.classList.toggle("add-to-cart");
-    element.innerText = element.classList.contains("cart-btn-clicked")
-      ? "Remove from Cart"
-      : "Add to Cart";
-  });
+allProducts.addEventListener("click", async (e) => {
+  const button = e.target.closest("[data-product-id]");
+  if (!button) return;
+
+  const productId = +button.dataset.productId;
+  if (button.classList.contains("cart-btn-clicked")) {
+    await removeFromCart(productId);
+  } else {
+    await addToCart(productId);
+  }
+  renderCartCounter();
+  button.classList.toggle("cart-btn-clicked");
+  button.classList.toggle("add-to-cart");
+  button.innerText = button.classList.contains("cart-btn-clicked")
+    ? "Remove from Cart"
+    : "Add to Cart";
 });
 
 renderFavCounter();
-let addToFavBtns = document.querySelectorAll("[data-fav-product-id]");
-addToFavBtns.forEach((element) => {
-  element.addEventListener("click", async () => {
-    if (element.classList.contains("fav-btn-clicked")) {
-      await removeFromFav(+element.dataset.favProductId);
+
+allProducts.addEventListener("click", async (e) => {
+  const button = e.target.closest("[data-fav-product-id]");
+  if (!button) return;
+
+if (button.classList.contains("fav-btn-clicked")) {
+      await removeFromFav(+button.dataset.favProductId);
     } else {
-      await addToFav(+element.dataset.favProductId);
+      await addToFav(+button.dataset.favProductId);
     }
     renderFavCounter();
-    element.classList.toggle("fav-btn-clicked");
-    element.classList.toggle("like-btn");
-  });
+    button.classList.toggle("fav-btn-clicked");
+    button.classList.toggle("like-btn");
 });
