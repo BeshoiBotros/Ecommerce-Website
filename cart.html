@@ -1,53 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./CSS/cart.css" />
-    <link rel="stylesheet" href="./CSS/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-    />
-    <title>Cart</title>
-  </head>
-  <body>
-    <header>
-      <div class="top-header">
-        <div class="container">
-          <a href="#" class="logo"><img src="./img/logo.png" alt="" /></a>
 
-          <form action="" class="search-box" id="search-form">
-            <input
-              type="text"
-              name="search"
-              id="search-input"
-              placeholder="Search For Products"
-              required
-            />
-            <button type="submit">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-          </form>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./CSS/cart.css" />
+  <link rel="stylesheet" href="./CSS/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+  <title>Cart</title>
+</head>
 
-          <div class="header-icons">
-            <div class="icons">
-              <a href="#">
-                <i class="fa-regular fa-heart"></i>
-                <span class="badge" id="fav-counter">0</span>
-              </a>
-              <a href="./cart.html">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span class="badge" id="cart-counter">0</span>
-              </a>
-            </div>
+<body>
+  <header>
+    <div class="top-header">
+      <div class="container">
+        <a href="#" class="logo"><img src="./img/logo.png" alt="" /></a>
+
+        <form action="" class="search-box" id="search-form">
+          <input type="text" name="search" id="search-input" placeholder="Search For Products" required />
+          <button type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
+
+        <div class="header-icons">
+          <div class="icons">
+            <a href="#">
+              <i class="fa-regular fa-heart"></i>
+              <span class="badge" id="fav-counter">0</span>
+            </a>
+            <a href="./cart.html">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span class="badge" id="cart-counter">0</span>
+            </a>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="bottom-header">
-        <div class="container">
-          <nav class="nav" style="margin: auto;"">
+    <div class="bottom-header">
+      <div class="container">
+        <nav class="nav" style="margin: auto;"">
+            <ul class=" nav-links">
+          <li><a href="./index.html"> Home </a></li>
+          <li><a href="#"> About </a></li>
+          <li class="active"><a href="#"> Cart </a></li>
+          <li><a href="#"> Blog </a></li>
+          <li><a href="#"> Contact </a></li>
+          </ul>
+        </nav>
+        <button id="menu-btn">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="login-signup btns" style="display: none">
+          <a href="#" class="btn">
+            Login
+            <i class="fa-solid fa-right-to-bracket"></i>
+          </a>
+
+          <a href="#" class="btn">
+            Sign Up
+            <i class="fa-solid fa-user-plus"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="mobile-menu">
+        <div class="div">
+          <nav class="nav">
             <ul class="nav-links">
               <li><a href="./index.html"> Home </a></li>
               <li><a href="#"> About </a></li>
@@ -56,10 +76,7 @@
               <li><a href="#"> Contact </a></li>
             </ul>
           </nav>
-          <button id="menu-btn">
-            <i class="fa-solid fa-bars"></i>
-          </button>
-          <div class="login-signup btns" style="display: none">
+          <div class="login-signup btns">
             <a href="#" class="btn">
               Login
               <i class="fa-solid fa-right-to-bracket"></i>
@@ -71,127 +88,146 @@
             </a>
           </div>
         </div>
-
-        <div class="mobile-menu">
-          <div class="div">
-            <nav class="nav">
-              <ul class="nav-links">
-                <li><a href="./index.html"> Home </a></li>
-                <li><a href="#"> About </a></li>
-                <li class="active"><a href="#"> Cart </a></li>
-                <li><a href="#"> Blog </a></li>
-                <li><a href="#"> Contact </a></li>
-              </ul>
-            </nav>
-            <div class="login-signup btns">
-              <a href="#" class="btn">
-                Login
-                <i class="fa-solid fa-right-to-bracket"></i>
-              </a>
-
-              <a href="#" class="btn">
-                Sign Up
-                <i class="fa-solid fa-user-plus"></i>
-              </a>
-            </div>
-          </div>
-          <button id="x-mark">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </div>
+        <button id="x-mark">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <div class="cart-container">
-      <!-- Cart Items -->
-      <div class="cart-items">
+  <div class="cart-container">
+    <!-- Cart Items -->
+    <div class="cart-items">
 
-        <div class="cart-item">
-          <img src="./img/product/15.png" alt="Product" />
-          <div class="item-info">
-            <h4>Another Product</h4>
-            <p>Short description</p>
-          </div>
-          <div class="item-quantity">
-            <button>-</button>
-            <span>2</span>
-            <button>+</button>
-          </div>
-          <div class="item-price"><span>$1,000</span></div>
-          <button class="remove-btn">Remove</button>
+      <div class="cart-item">
+        <img src="./img/product/15.png" alt="Product" />
+        <div class="item-info">
+          <h4>Another Product</h4>
+          <p>Short description</p>
         </div>
-      </div>
-
-      <!-- Cart Summary -->
-      <div class="cart-summary">
-        <h3>Order Summary</h3>
-        <div class="summary-row">
-          <span>Subtotal</span>
-          <span>$1,500</span>
+        <div class="item-quantity">
+          <button>-</button>
+          <span>2</span>
+          <button>+</button>
         </div>
-        <div class="summary-row">
-          <span>Shipping</span>
-          <span>$5.00</span>
-        </div>
-        <div class="summary-row total">
-          <span>Total</span>
-          <span>$1,550</span>
-        </div>
-        <button class="checkout-btn">Proceed to Checkout</button>
+        <div class="item-price"><span>$1,000</span></div>
+        <button class="remove-btn">Remove</button>
       </div>
     </div>
 
-    <footer>
-      <div class="container">
-        <div class="row">
-          <img src="./img/logo.png" alt="" />
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi,
-            vero?
-          </p>
-          <div class="footer-icons">
-            <a href="#"><i class="fa-solid fa-phone"></i></a>
-            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+    <div class="cart-summary">
+
+    </div>
+  </div>
+  <div class="checkout-popup">
+
+    <div class="container">
+      <button id="close-popup">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="payment-form">
+        <h2>Payment Details</h2>
+        <form id="pay-form">
+          <div class="form-group">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" placeholder="Beshoy Botros" required />
           </div>
-        </div>
-        <div class="row">
-          <h3 class="title">Find It Fast</h3>
-          <ul>
-            <li><a href="#">Laptops & Computers</a></li>
-            <li><a href="#">Smart Phones & Tablets</a></li>
-            <li><a href="#"> TV & Audio</a></li>
-            <li><a href="#"> Appliances</a></li>
-            <li><a href="#">Jewelry & Watches</a></li>
-          </ul>
-        </div>
-        <div class="row">
-          <h3 class="title">Quick Links</h3>
-          <ul>
-            <li><a href="#">Your Account</a></li>
-            <li><a href="#">Returns & Exchanges</a></li>
-            <li><a href="#"> Shipping & Delivery</a></li>
-            <li><a href="#"> Estimated Delivery Time</a></li>
-            <li><a href="#">Purchase Hisotry</a></li>
-          </ul>
-        </div>
-        <div class="row">
-          <h3 class="title">Service us</h3>
-          <ul>
-            <li><a href="#"> Support Center</a></li>
-            <li><a href="#"> Term & Conditions</a></li>
-            <li><a href="#"> Privacy Policy</a></li>
-            <li><a href="#"> Help</a></li>
-            <li><a href="#"> FAQS</a></li>
-          </ul>
+
+          <div class="form-group">
+            <label for="cardNumber">Card Number</label>
+            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="16" required />
+          </div>
+
+          <div class="form-group">
+            <label for="expiry">Expiry Date</label>
+            <input type="month" id="expiry" required />
+          </div>
+
+          <div class="form-group">
+            <label for="cvv">CVV</label>
+            <input type="password" id="cvv" placeholder="123" maxlength="3" required />
+          </div>
+
+          <div class="form-group">
+            <label for="country">Country</label>
+            <select id="country" required>
+              <option value="">Select Country</option>
+              <option value="eg">Egypt</option>
+              <option value="us">United States</option>
+              <option value="uk">United Kingdom</option>
+            </select>
+          </div>
+
+          <button type="submit" class="payment-btn">Pay Now</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="payment-successful">
+    <div class="container">
+      <div class="content">
+        <div class="success-icon">✔️</div>
+        <h1>Payment Successful!</h1>
+        <p>Thank you for your payment. Your transaction has been completed successfully.</p>
+        <a href="/" class="btn">Return to Home</a>
+      </div>
+    </div>
+  </div>
+
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <img src="./img/logo.png" alt="" />
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi,
+          vero?
+        </p>
+        <div class="footer-icons">
+          <a href="#"><i class="fa-solid fa-phone"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
         </div>
       </div>
-    </footer>
+      <div class="row">
+        <h3 class="title">Find It Fast</h3>
+        <ul>
+          <li><a href="#">Laptops & Computers</a></li>
+          <li><a href="#">Smart Phones & Tablets</a></li>
+          <li><a href="#"> TV & Audio</a></li>
+          <li><a href="#"> Appliances</a></li>
+          <li><a href="#">Jewelry & Watches</a></li>
+        </ul>
+      </div>
+      <div class="row">
+        <h3 class="title">Quick Links</h3>
+        <ul>
+          <li><a href="#">Your Account</a></li>
+          <li><a href="#">Returns & Exchanges</a></li>
+          <li><a href="#"> Shipping & Delivery</a></li>
+          <li><a href="#"> Estimated Delivery Time</a></li>
+          <li><a href="#">Purchase Hisotry</a></li>
+        </ul>
+      </div>
+      <div class="row">
+        <h3 class="title">Service us</h3>
+        <ul>
+          <li><a href="#"> Support Center</a></li>
+          <li><a href="#"> Term & Conditions</a></li>
+          <li><a href="#"> Privacy Policy</a></li>
+          <li><a href="#"> Help</a></li>
+          <li><a href="#"> FAQS</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
 
-    <script type="module" src="./JS/controllersAndViews.js"></script>
-    <script type="module" src="./JS/utils.js"></script>
-    <script type="module" src="./JS/cart.js"></script>
-    
-  </body>
+  <script type="module" src="./JS/controllersAndViews.js"></script>
+  <script type="module" src="./JS/utils.js"></script>
+  <script type="module" src="./JS/cart.js"></script>
+
+</body>
+
 </html>

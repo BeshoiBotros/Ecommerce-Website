@@ -87,20 +87,12 @@ export async function addToFav(productId) {
   return fav;
 }
 
-export async function removeFromFav(id){
+export async function removeFromFav(id) {
   let fav = JSON.parse(localStorage.getItem("fav") || "[]");
-  let exist = fav.find((item) => item.id === id);
 
-  if (exist) {
-    exist.quantity -= 1;
-    if (exist.quantity <= 0) {
-      fav = fav.filter((item) => item.id !== id);
-    }
-  } else {
-    return;
-  }
+  fav = fav.filter((item) => item.id != id);
+
   localStorage.setItem("fav", JSON.stringify(fav));
-
   return fav;
 }
 

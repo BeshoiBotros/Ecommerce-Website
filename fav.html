@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favourite Products</title>
+    <link rel="stylesheet" href="./CSS/fav.css">
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+  </head>
+  <body>
+        <header>
+      <div class="top-header">
+        <div class="container">
+          <a href="#" class="logo"><img src="./img/logo.png" alt="" /></a>
+
+          <form action="" class="search-box" id="search-form">
+            <input
+              type="text"
+              name="search"
+              id="search-input"
+              placeholder="Search For Products"
+              required
+            />
+            <button type="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+
+          <div class="header-icons">
+            <div class="icons">
+              <a href="#">
+                <i class="fa-regular fa-heart"></i>
+                <span class="badge" id="fav-counter">0</span>
+              </a>
+              <a href="./cart.html">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="badge" id="cart-counter">0</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-header">
+        <div class="container">
+          <nav class="nav" style="margin: auto;"">
+            <ul class="nav-links">
+              <li><a href="./index.html"> Home </a></li>
+              <li><a href="#"> About </a></li>
+              <li><a href="./cart.html"> Cart </a></li>
+              <li><a href="#"> Blog </a></li>
+              <li><a href="#"> Contact </a></li>
+            </ul>
+          </nav>
+          <button id="menu-btn">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="login-signup btns" style="display: none">
+            <a href="#" class="btn">
+              Login
+              <i class="fa-solid fa-right-to-bracket"></i>
+            </a>
+
+            <a href="#" class="btn">
+              Sign Up
+              <i class="fa-solid fa-user-plus"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="mobile-menu">
+          <div class="div">
+            <nav class="nav">
+              <ul class="nav-links">
+                <li><a href="./index.html"> Home </a></li>
+                <li><a href="#"> About </a></li>
+                <li><a href="#"> Cart </a></li>
+                <li><a href="#"> Blog </a></li>
+                <li><a href="#"> Contact </a></li>
+              </ul>
+            </nav>
+            <div class="login-signup btns">
+              <a href="#" class="btn">
+                Login
+                <i class="fa-solid fa-right-to-bracket"></i>
+              </a>
+
+              <a href="#" class="btn">
+                Sign Up
+                <i class="fa-solid fa-user-plus"></i>
+              </a>
+            </div>
+          </div>
+          <button id="x-mark">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="products-grid">
+
+
+
+      </div>
+    </div>
+    <script type="module" src="./JS/fav.js"></script>
+    <script type="module" src="./JS/utils.js"></script>
+  </body>
+</html>
