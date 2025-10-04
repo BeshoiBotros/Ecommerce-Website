@@ -163,7 +163,8 @@ payForm.addEventListener('submit', (e)=>{
   }
 
   if (cvvValue.length !== 3){
-    alert('Cvv must be 3 digits!')
+    alert('Cvv must be 3 digits!');
+    return;
   }
 
   paymentSuccess.classList.toggle('popup-payment');
